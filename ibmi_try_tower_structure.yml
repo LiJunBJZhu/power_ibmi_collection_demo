@@ -1,6 +1,6 @@
 ---
 # The playbook is to demostrate leverage IBM i modules and plugins in Ansible tower.
-- hosts: ibmi
+- hosts: all
   collections:
    - ibm.power_ibmi
   
