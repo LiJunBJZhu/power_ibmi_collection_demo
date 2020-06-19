@@ -12,13 +12,6 @@
     
   tasks:
     - block:
-      - debug: 
-          msg: '{{ansible_facts}}'
-
-      - name: assert the target node is IBM i 
-        assert:
-          that:
-            - "'{{ansible_system}}' == 'OS400'"
 
       - name: Create library
         ibmi_cl_command:
