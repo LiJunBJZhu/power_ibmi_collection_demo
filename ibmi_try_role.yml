@@ -1,0 +1,22 @@
+- name: IBM i check a set of PTFs
+  hosts: testhost
+  gather_facts: no
+  collections:
+    - ibm.power_ibmi
+
+  vars:
+    check_ptf_list:
+      - {'ptf_number':'SI73491', 'product_id':'5770SS1', 'savf_name':'QSI73491'}
+      - {'ptf_number':'SI73223', 'product_id':'5770SS1', 'savf_name':'QSI73223'}
+    
+  roles:
+    - role: check_ptf
+    - role: load_ptf
+      vars: 
+        to_be_loaded_list: '{{to_be_load}}'
+  
+  tasks:
+    - include_role:
+        name: apply_all_loaded_ptfs
+      when: "'success' in excution_status.values() | join(' ')"
+
