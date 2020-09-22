@@ -1,3 +1,2 @@
 collections:
   - name: ibm.power_ibmi
-    version: 1.0.1
